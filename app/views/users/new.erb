@@ -4,24 +4,12 @@
 <%= erb :"_errors", locals: {errors: @user.errors} %>
 <% end %>
 
-<div class="user-registration-form">
-  <form method="POST" action="/users">
+<form method="POST" action="/users">
+  <input type="text" name="user[first_name]" placeholder="First Name" value="<%= @user.first_name %>">
+  <input type="text" name="user[last_name]" placeholder="Last Name" value="<%= @user.last_name %>">
+  <input type="email" name="user[email]" placeholder="Email" value="<%= @user.email %>">
+  <input type="text" name="user[username]" placeholder="Username" value="<%= @user.username %>">
+  <input type="password" name="user[password]" placeholder="Password" value="">
+  <input type="submit">
+</form>
 
-      <p><label for="first_name">First Name:</label>
-      <input type="text" name="user[first_name]"></p>
-
-      <p><label for="last_name">Last Name:</label>
-      <input type="text" name="user[last_name]"></p>
-
-      <p><label for="username">Username:</label>
-      <input type="text" name="user[username]"></p>
-
-      <p><label for="email">Email:</label>
-      <input type="email" name="user[email]"></p>
-
-      <p><label for="password">Password:</label>
-      <input type="password" name="user[password]"></p>
-      <input type="submit" value="Sign up"></p>
-
-  </form>
-</div>

@@ -9,10 +9,10 @@ get '/surveys/new' do
 end
 
 post '/surveys' do
-  @survey = Survey.new
+   @survey = Survey.new(title: params[:title], creator_id: current_user.id)
   if request.xhr?
     if @survey.save
-
+      erb :"/questions/new", layout: false
     else
       status 422
       @survey.errors.full_messages
@@ -25,6 +25,7 @@ post '/surveys' do
     end
   end
 end
+
 
 get '/surveys/:id' do
   @survey = Survey.find(params[:id])
