@@ -1,19 +1,20 @@
 class User < ActiveRecord::Base
   include BCrypt
 
-  has_many :games
+  has_many :surveys, foreign_key: :creator_id
+  has_many :responses
 
   validates :username, :first_name, :last_name, :email, presence: true
   validate :validate_password
 
   def password
-    @password ||= Password.new(password_type_thing)
+    @password ||= Password.new(encrypted_password)
   end
 
   def password=(plain_text_password)
     @raw_password = plain_text_password
     @password = Password.create(plain_text_password)
-    self.password_type_thing = @password
+    self.encrypted_password = @password
   end
 
   def authenticate(plain_text_password)
