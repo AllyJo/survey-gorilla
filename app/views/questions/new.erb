@@ -1,0 +1,9 @@
+<h2><%= @survey.title %></h2>
+
+<form action="/surveys/<%= @survey.id %>/questions" method="post" class="question-form">
+  <fieldset class="question-field">
+    <%= erb :"/surveys/_add_question" %>
+  </fieldset>
+  <button type="button" class="add-question-input">Add Another Question</button>
+  <input type="submit" value="Submit All Questions">
+</form>
