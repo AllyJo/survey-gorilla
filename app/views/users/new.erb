@@ -1,12 +1,27 @@
-<h3>Sign Up</h3>
+<h1>Register With Survery Gorilla</h1>
 
 <% if @user.errors.any? %>
 <%= erb :"_errors", locals: {errors: @user.errors} %>
 <% end %>
 
-<form method="POST" action="/users">
-  <input type="text" name="user[name]" placeholder="Name" value="<%= @user.name %>">
-  <input type="text" name="user[username]" placeholder="Username" value="<%= @user.username %>">
-  <input type="password" name="user[password]" placeholder="Password" value="">
-  <input type="submit">
-</form>
+<div class="user-registration-form">
+  <form method="POST" action="/users">
+
+      <p><label for="first_name">First Name:</label>
+      <input type="text" name="user[first_name]"></p>
+
+      <p><label for="last_name">Last Name:</label>
+      <input type="text" name="user[last_name]"></p>
+
+      <p><label for="username">Username:</label>
+      <input type="text" name="user[username]"></p>
+
+      <p><label for="email">Email:</label>
+      <input type="email" name="user[email]"></p>
+
+      <p><label for="password">Password:</label>
+      <input type="password" name="user[password]"></p>
+      <input type="submit" value="Sign up"></p>
+
+  </form>
+</div>
