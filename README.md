@@ -1,12 +1,17 @@
-# Sinatra Crud Example
+# Survey Gorilla
+## Team ABC
+- Austin
+- Baska
+- Charlie
 
-This is a example with users and games.  A user has many games.  
+### User Stories
+- User A exists
+- User A created Survey X
+- Question Y belongs to Survey X
+- Possible Choice Z belongs to Question Y
+- User B completed Survey X
+- User B chose Possible Choice Z for Question Y
 
-In this branch you will find:
+![schema](schema.png)
 
-- Full CRUD for games
-- Create and Read for User
-- Full authentication (login / logout)
-- Full authorization (locking down the front end and back end)
-- Error handling
 
