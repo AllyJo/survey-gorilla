@@ -16,6 +16,10 @@ gem 'shotgun'
 
 gem 'bcrypt'
 
+gem 'extra_print'
+
+
+
 group :test do
   gem 'shoulda-matchers'
   gem 'rack-test'
