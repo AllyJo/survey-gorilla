@@ -1,4 +1,4 @@
-<h3>Sign Up</h3>
+<h1>Register With Survery Gorilla</h1>
 
 <% if @user.errors.any? %>
 <%= erb :"_errors", locals: {errors: @user.errors} %>
@@ -12,3 +12,4 @@
   <input type="password" name="user[password]" placeholder="Password" value="">
   <input type="submit">
 </form>
+
