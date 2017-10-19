@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
 
   has_many :games
 
-  validates :username, :name, presence: true
+  validates :username, :first_name, :last_name, :email, presence: true
   validate :validate_password
 
   def password
