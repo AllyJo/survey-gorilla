@@ -4,8 +4,9 @@
 
 <% if @user.surveys.any? %>
 <% @user.surveys.each do |survey| %>
-  <ul class="show-user-survey-title hide-user-survey-title ">
-     <li id="<%= survey.id %>"><a href="/surveys/<%= survey.id %>/responses">Show</a> <%= survey.title %></li>
+  <ul class="show-user-survey-title">
+     <li id="<%= survey.id %>"><a href="/surveys/<%= survey.id %>/responses"><i class="fa fa-arrow-circle-down" aria-hidden="true"></i>
+</a> <%= survey.title %></li>
   </ul>
   <% end  %>
 
@@ -24,4 +25,4 @@
 
 
 
-<h2 id="create-survey-link"> <a href="/surveys/new">Create New Survey</a></h2>
+<h2 id="create-survey-link"><a href="/surveys/new">Create New Survey</a></h2>

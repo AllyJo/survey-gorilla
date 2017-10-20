@@ -85,6 +85,7 @@ var showSurveyHandler = function() {
   });
 
   request.done(function(response){
+    $(".fa-arrow-circle-down").hide()
     $link.closest("li").append(response);
   });
 };
@@ -107,7 +108,7 @@ var showUserSurvey = function(){
   });
 
    request.done(function(response){
-    // $link.closest("li").empty();
+    $link.siblings('.survey-response').empty()
     $link.closest("li").append(response);
   });
 }
