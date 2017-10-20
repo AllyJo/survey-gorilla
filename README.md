@@ -1,5 +1,5 @@
 # Survey Gorilla
-## Team ABC
+## Team ABC aka Team Straight Business
 - Austin
 - Baska
 - Charlie

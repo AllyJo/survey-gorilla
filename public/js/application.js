@@ -5,6 +5,7 @@ $(document).ready(function() {
   $(".survey-title a").on("click", showSurveyHandler);
   $(".main").on("click", ".add-choice-input", addChoiceButton);
   $(".main").on("submit", ".choice-form", choiceFormHandler);
+  $(".user-survey-title a").on("click", showUserSurvey);
 });
 
 var choiceFormHandler = function(){
@@ -76,20 +77,51 @@ var showSurveyHandler = function() {
   event.preventDefault();
 
   var $link = $(this);
-  var url = $link.attr("href")
+  var url = $link.attr("href");
 
   var request = $.ajax({
     url: url
-  })
+  });
 
   request.done(function(response){
     $link.closest("li").append(response);
   });
-}
+};
 
 var addChoiceButton = function() {
   event.preventDefault();
   console.log("anything");
   var choiceInput = $('.choice-input').first().clone().val("");
   $(this).closest("form").find(".choice-field").append(choiceInput);
+};
+
+var showUserSurvey = function(){
+  event.preventDefault();
+
+  var $link = $(this);
+  var url = $link.attr("href");
+
+  var request = $.ajax({
+    url: url
+  });
+
+  request.done
+   request.done(function(response){
+    $link.closest("li").append(response);
+  });
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
