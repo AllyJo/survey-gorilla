@@ -1,18 +1,17 @@
 <% if @errors %>
 <%= erb :"_errors", locals: {errors: @errors} %>
 <% end %>
-
-<ul id="<%= @survey.id %>">
-   <% @survey.questions.each do |question| %>
-   <li>
-      <%= question.body  %>
-      <ul>
-        <% question.choices.each do |choice| %>
-          <li><%= choice.body  %> </li>
-        <% end %>
-      </ul>
-   </li>
-   <% end %>
-</ul>
-
-
+<div id="<%= @survey.id %>">
+  <ul>
+     <% @survey.questions.each do |question| %>
+     <li>
+        <%= question.body  %>
+        <ul>
+          <% question.choices.each do |choice| %>
+            <li><%= choice.body  %> </li>
+          <% end %>
+        </ul>
+     </li>
+     <% end %>
+  </ul>
+</div>
