@@ -1,5 +1,10 @@
 <h2><%= @survey.title %></h2>
 
+<% if @errors %>
+<%= erb :"_errors", locals: {errors: @errors} %>
+<% end %>
+
+
 <form action="/surveys/<%= @survey.id %>/questions" method="post" class="question-form">
   <fieldset class="question-field">
     <%= erb :"/surveys/_add_question" %>
