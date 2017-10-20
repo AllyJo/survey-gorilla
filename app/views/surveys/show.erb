@@ -1,5 +1,15 @@
-<h3 id=<%= @survey.id %>><%= @survey.creator_id %></h3>
-
 <% if @errors %>
 <%= erb :"_errors", locals: {errors: @errors} %>
 <% end %>
+
+<form id="<%= @survey.id %>" method="post" action="/surveys/<%= @survey.id %>/responses">
+  <% @survey.questions.each do |question| %>
+    <label><%= question.body  %></label>
+    <% question.choices.each do |choice| %>
+      <p>
+        <input type="radio" name="<%= question.id %>" value="<%= choice.id %>"> <%= choice.body %></input>
+      </p>
+    <% end %>
+  <% end %>
+  <input type="submit" value="Submit">
+</form>
