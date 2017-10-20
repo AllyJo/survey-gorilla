@@ -1,3 +1,7 @@
+<% if @errors %>
+<%= erb :"_errors", locals: {errors: @errors} %>
+<% end %>
+
 <ul>
   <% @questions.each do |question| %>
     <li><%= question.body %></li>
