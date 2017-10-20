@@ -1,23 +1,15 @@
 <% if @errors %>
 <%= erb :"_errors", locals: {errors: @errors} %>
 <% end %>
-<div id="<%= @survey.id %>">
-  <ul>
-     <% @survey.questions.each do |question| %>
-     <li>
-        <%= question.body  %>
-        <form>
-          <% question.choices.each do |choice| %>
-            <p><input type="radio" name="<%= question.id %>" value="<%= choice.id %>"><%= choice.body %></input></p>
-          <% end %>
-        </form>
-     </li>
-     <% end %>
-  </ul>
-</div>
 
-
-
-<form id="<%= @survey.id %>">
-  #MAKE THE FORM
+<form id="<%= @survey.id %>" method="post" action="/surveys/<%= @survey.id %>/responses">
+  <% @survey.questions.each do |question| %>
+    <label><%= question.body  %></label>
+    <% question.choices.each do |choice| %>
+      <p>
+        <input type="radio" name="<%= question.id %>" value="<%= choice.id %>"> <%= choice.body %></input>
+      </p>
+    <% end %>
+  <% end %>
+  <input type="submit" value="Submit">
 </form>

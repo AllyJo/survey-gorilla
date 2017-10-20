@@ -83,11 +83,8 @@ var showSurveyHandler = function() {
   })
 
   request.done(function(response){
-    console.log(response)
-    var id = $(response).attr("id")
-    console.log(id)
-    $("#" + id).append(response)
-  })
+    $link.closest("li").append(response);
+  });
 }
 
 var addChoiceButton = function() {
