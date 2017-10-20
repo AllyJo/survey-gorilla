@@ -1,1 +1,12 @@
-<h3 id=<%= @survey.id %>><%= @survey.creator_id %></h3>
+<ul id="<%= @survey.id %>">
+   <% @survey.questions.each do |question| %>
+   <li>
+      <%= question.body  %>
+      <ul>
+        <% question.choices.each do |choice| %>
+          <li><%= choice.body  %> </li>
+        <% end %>
+      </ul>
+   </li>
+   <% end %>
+</ul>
