@@ -1,13 +1,27 @@
-<h3>Profile Page</h3>
 
-<h4><%= @user.first_name %>'s Surveys</h4>
+
+<h2><%= @user.first_name %>'s Surveys</h2>
 
 <% if @user.surveys.any? %>
 <% @user.surveys.each do |survey| %>
-  <ul class="user-survey-title">
-     <li id="<%= survey.id %>"><a href="/surveys/<%= survey.id %>/responses"><%= survey.title %></a></li>
+  <ul class="show-user-survey-title hide-user-survey-title ">
+     <li id="<%= survey.id %>"><a href="/surveys/<%= survey.id %>/responses">Show</a> <%= survey.title %></li>
   </ul>
   <% end  %>
 
-<h2 id="create-survey-link"> <a href="/surveys/new">Create New Survey</a></h2>
 <% end %>
+<hr>
+<h2>Taken Surveys</h2>
+<div class="taken-list">
+  <% if @user.taken_surveys.any? %>
+    <ul>
+    <% @user.taken_surveys.each do |survey| %>
+      <li> <%= survey.title %> </li>
+    <% end %>
+    </ul>
+  <% end %>
+</div>
+
+
+
+<h2 id="create-survey-link"> <a href="/surveys/new">Create New Survey</a></h2>
