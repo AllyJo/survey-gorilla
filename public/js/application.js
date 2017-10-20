@@ -2,6 +2,7 @@ $(document).ready(function() {
   $("#create-survey-form").on("submit", surveyFormHandler);
   $(".main").on("click", ".add-question-input", addQuestionButton);
   $(".main").on("submit", ".question-form",questionFormHandler);
+  $(".survey-title a").on("click", showSurveyHandler);
 });
 
 var questionFormHandler = function(){
@@ -48,3 +49,36 @@ var addQuestionButton = function() {
   var questionInput = $('.question-input').first().clone().val("");
   $(".question-field").append(questionInput);
 };
+
+var showSurveyHandler = function() {
+  event.preventDefault();
+
+  var $link = $(this);
+  var url = $link.attr("href")
+
+  var request = $.ajax({
+    url: url
+  })
+
+  request.done(function(response){
+    var id = $(response).attr("id")
+    $("#" + id).append(response)
+  })
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -5,7 +5,7 @@ end
 
 get '/surveys/new' do
   @survey = Survey.new
-  erb :"surveys/new"
+   erb :"surveys/new"
 end
 
 post '/surveys' do
@@ -29,7 +29,9 @@ end
 
 get '/surveys/:id' do
   @survey = Survey.find(params[:id])
-  erb :"surveys/show"
+  if request.xhr?
+    erb :"surveys/show", layout: false
+  else
+    erb :"surveys/show"
+  end
 end
-
-
