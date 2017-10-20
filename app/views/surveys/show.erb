@@ -6,12 +6,18 @@
      <% @survey.questions.each do |question| %>
      <li>
         <%= question.body  %>
-        <ul>
+        <form>
           <% question.choices.each do |choice| %>
-            <li><%= choice.body  %> </li>
+            <p><input type="radio" name="<%= question.id %>" value="<%= choice.id %>"><%= choice.body %></input></p>
           <% end %>
-        </ul>
+        </form>
      </li>
      <% end %>
   </ul>
 </div>
+
+
+
+<form id="<%= @survey.id %>">
+  #MAKE THE FORM
+</form>
