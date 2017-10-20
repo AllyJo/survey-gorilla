@@ -6,31 +6,27 @@ end
 
 post '/surveys/:survey_id/questions' do
   @questions = []
+  @errors = []
   params[:questions].each do |body|
     q = Question.new(body: body, survey_id: params[:survey_id])
     if q.save
       @questions << q
+    else
+      @errors << q
     end
   end
   if request.xhr?
-    if @questions
+    if @questions.length == params[:questions].length
       erb :"/questions/index", layout: false
     else
       status 422
-      @question.errors.full_messages
+      @errors.map! do |question|
+        question.errors.full_messages
+      end
     end
   else
     ep "not ajax"
   end
-  # end
-    # else
-    #   if @question.save
-    #     redirect "/questions/new"
-    #   else
-    #     @question.errors.full_messages
-    #   end
-    # end
-
 end
 
 get '/surveys/:survey_id/questions/:id' do

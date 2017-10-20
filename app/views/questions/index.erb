@@ -1,4 +1,12 @@
+<% if @errors %>
+<%= erb :"_errors", locals: {errors: @errors} %>
+<% end %>
+
 <% @questions.each do |question| %>
-  <h3><%= question.body %></h3>
-  <%= erb :"/choices/new", locals: { question: question } %>
+  <div class="choice-list">   
+    <div class="choice-container">
+      <h3><%= question.body %></h3>
+    </div>
+    <%= erb :"/choices/new", locals: { question: question } %>
+  </div>
 <% end %>
