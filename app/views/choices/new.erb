@@ -1,0 +1,7 @@
+<form action="/questions/<%= question.id %>/choices" method="post" class="choice-form">
+  <fieldset class="choice-field">
+    <%= erb :"/choices/_add_choice" %>
+  </fieldset>
+  <button type="button" class="add-choice-input">Add Another Choice</button>
+  <input type="submit" value="Submit All Coices">
+</form>

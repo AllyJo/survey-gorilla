@@ -14,7 +14,7 @@ post '/surveys/:survey_id/questions' do
   end
   if request.xhr?
     if @questions
-      erb :"/questions/show", layout: false
+      erb :"/questions/index", layout: false
     else
       status 422
       @question.errors.full_messages
