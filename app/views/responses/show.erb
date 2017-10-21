@@ -1,20 +1,49 @@
 
 <div class="survey-response">
-  <p>Total Responders: <%= @survey.survey_takers.count %></p>
 
+
+  <p>Total Responders: <%= @survey.survey_takers.count %></p>
   <ul>
     <% @survey.questions.each do |question| %>
       <li>Question: <%= question.body %></li>
-      <ul>
-        <% question.choices.each do |choice| %>
-          <li>
-          <p>Choice: <%= choice.body %></p>
-          <p>Choice count: <%= choice.responses.count %></p>
-          </li>
-      <% end %>
-      </ul>
+      <script type="text/javascript">
+       Highcharts.chart('container-<%= question.id %>', {
+            chart: {
+                plotBackgroundColor: null,
+                plotBorderWidth: null,
+                plotShadow: false,
+                type: 'pie'
+            },
+            title: {
+                text: '<%= question.body %>'
+            },
+            tooltip: {
+                pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+            },
+            plotOptions: {
+                pie: {
+                    allowPointSelect: true,
+                    cursor: 'pointer',
+                    dataLabels: {
+                        enabled: false
+                    },
+                    showInLegend: true
+                }
+            },
+            series: [{
+                name: 'Choices',
+                colorByPoint: true,
+                data: [ <% question.choices.each do |choice| %>
+                      {name:  "<%= ep choice.body %>",
+                      y: <%= ep choice.responses.count %> },
+                    <% end %>
+                ]
+            }]
+        });
+      </script>
+    <div id="container-<%=question.id%>" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>
+
     <% end %>
-  </ul>
   <button class="hide-button">
     <i class="fa fa-arrow-circle-up" aria-hidden="true"></i>
   </button>

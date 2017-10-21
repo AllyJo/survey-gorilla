@@ -1,10 +1,12 @@
 get '/surveys/:survey_id/responses' do
+  authenticate!
   @survey = Survey.find(params[:survey_id])
   @responses = @survey.responses
   erb :"/responses/show", layout: false
 end
 
 post '/surveys/:survey_id/responses' do
+  authenticate!
   @survey = Survey.find(params[:survey_id])
 
   params.each do |question_id, choice_id|

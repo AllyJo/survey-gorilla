@@ -6,13 +6,14 @@ $(document).ready(function() {
   $(".main").on("click", ".add-choice-input", addChoiceButton);
   $(".main").on("submit", ".choice-form", choiceFormHandler);
   $(".main").on("click", ".show-user-survey-title a", showUserSurvey);
-  $(".main").on("click", ".hide-button", hideUserSurvey)
+  $(".main").on("click", ".hide-button", hideUserSurvey);
 });
+
 
 var choiceFormHandler = function(){
   event.preventDefault();
 
-  $form = $(this)
+  $form = $(this);
   var url = $form.attr("action");
   var method = $form.attr("method");
   var data = $form.serialize();
@@ -77,6 +78,8 @@ var addQuestionButton = function() {
 var showSurveyHandler = function() {
   event.preventDefault();
 
+  console.log("click")
+
   var $link = $(this);
   var url = $link.attr("href");
 
@@ -85,7 +88,7 @@ var showSurveyHandler = function() {
   });
 
   request.done(function(response){
-    $(".fa-arrow-circle-down").hide()
+    $link.siblings('.survey-form').empty()
     $link.closest("li").append(response);
   });
 };
@@ -108,10 +111,10 @@ var showUserSurvey = function(){
   });
 
    request.done(function(response){
-    $link.siblings('.survey-response').empty()
+    $link.siblings('.survey-response').empty();
     $link.closest("li").append(response);
   });
-}
+};
 
 
 var hideUserSurvey = function() {
