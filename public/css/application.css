@@ -198,20 +198,20 @@ hr {
   margin: 0 auto;
   width: 300px;
 }
-.question-form {
+.question-form, .choice-form {
   box-sizing: border-box;
   margin: 0 auto;
   width: 60%;
 }
 
-.question-form fieldset {
+.question-form fieldset, .choice-form fieldset {
   border: 0;
   outline: 0;
   padding: 0;
   margin: 0 auto;
 }
 
-.question-field textarea {
+.question-field textarea, .choice-form textarea {
   margin: 10px auto;
   width: 100%;
   height: 100px;
@@ -222,7 +222,7 @@ hr {
   text-align: center;
 }
 
-.question-form input[type=submit] {
+.question-form input[type=submit], .choice-form input[type=submit] {
   margin: 10px auto;
   width: 80%;
   border: 0;
@@ -244,7 +244,7 @@ h2 a {
   color: #505759;
 }
 
-.question-form .fa-plus-circle {
+.question-form .fa-plus-circle, .choice-form .fa-plus-circle {
   font-size: 30px;
   margin: 0 auto;
   text-align: center;
