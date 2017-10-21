@@ -1,7 +1,8 @@
+<h2 id="create-survey-link"><a href="/surveys/new">Create New Survey</a></h2>
+<div class="survey-container">
 <% @surveys.each do |survey| %>
 <ul class="survey-title">
-   <li id="<%= survey.id %>"><a href="/surveys/<%= survey.id %>"><%= survey.title %></a></li>
+   <li id="<%= survey.id %>" class="survey-title-item"><a href="/surveys/<%= survey.id %>"><%= survey.title %></a></li>
 </ul>
   <% end  %>
-
-<h2 id="create-survey-link"> <a href="/surveys/new">Create New Survey</a></h2>
+</div>
