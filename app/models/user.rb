@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
   has_many :taken_surveys, -> { distinct }, through: :responses, source: :survey
 
   validates :username, :first_name, :last_name, :email, presence: true
+  validates :taken_surveys, uniqueness: { scope: :survey }
   validate :validate_password
 
   def password

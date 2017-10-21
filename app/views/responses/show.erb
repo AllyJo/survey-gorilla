@@ -3,9 +3,7 @@
 
 
   <p>Total Responders: <%= @survey.survey_takers.count %></p>
-  <ul>
     <% @survey.questions.each do |question| %>
-      <li>Question: <%= question.body %></li>
       <script type="text/javascript">
        Highcharts.chart('container-<%= question.id %>', {
             chart: {
@@ -42,7 +40,7 @@
         });
       </script>
     <div id="container-<%=question.id%>" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>
-
+    <hr>
     <% end %>
   <button class="hide-button">
     <i class="fa fa-arrow-circle-up" aria-hidden="true"></i>

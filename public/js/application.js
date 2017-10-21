@@ -88,7 +88,7 @@ var showSurveyHandler = function() {
   });
 
   request.done(function(response){
-    $link.siblings('.survey-form').empty()
+    $link.siblings('.survey-form').remove('.survey-form')
     $link.closest("li").append(response);
   });
 };
