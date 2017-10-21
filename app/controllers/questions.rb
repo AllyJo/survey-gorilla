@@ -5,6 +5,7 @@ get '/surveys/:survey_id/questions' do
 end
 
 post '/surveys/:survey_id/questions' do
+  authenticate!
   @questions = []
   @errors = []
   params[:questions].each do |body|

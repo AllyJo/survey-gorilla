@@ -2,14 +2,18 @@
 <%= erb :"_errors", locals: {errors: @errors} %>
 <% end %>
 
-<form id="<%= @survey.id %>" method="post" action="/surveys/<%= @survey.id %>/responses">
-  <% @survey.questions.each do |question| %>
-    <label><%= question.body  %></label>
-    <% question.choices.each do |choice| %>
-      <p>
-        <input type="radio" name="<%= question.id %>" value="<%= choice.id %>"> <%= choice.body %></input>
-      </p>
+<% if logged_in? %>
+  <form id="<%= @survey.id %>" method="post" action="/surveys/<%= @survey.id %>/responses" class="survey-form">
+    <% @survey.questions.each do |question| %>
+      <label><%= question.body  %></label>
+      <% question.choices.each do |choice| %>
+        <p>
+          <input type="radio" name="<%= question.id %>" value="<%= choice.id %>"> <%= choice.body %></input>
+        </p>
+      <% end %>
     <% end %>
-  <% end %>
-  <input type="submit" value="Submit">
-</form>
+    <input type="submit" value="Submit">
+  </form>
+<% else %>
+<h3 class="survey-form">Please login to take survey!</h3>
+<% end %>

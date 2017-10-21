@@ -4,11 +4,13 @@ get '/surveys' do
 end
 
 get '/surveys/new' do
+  authenticate!
   @survey = Survey.new
    erb :"surveys/new"
 end
 
 post '/surveys' do
+  authenticate!
    @survey = Survey.new(title: params[:title], creator_id: current_user.id)
   if request.xhr?
     if @survey.save
