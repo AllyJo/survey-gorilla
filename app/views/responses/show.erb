@@ -1,15 +1,21 @@
-<p>Total Responders: <%= @survey.survey_takers.count %></p>
 
-<ul>
-  <% @survey.questions.each do |question| %>
-    <li>Question: <%= question.body %></li>
-    <ul>
-      <% question.choices.each do |choice| %>
-        <li>
-        <p>Choice: <%= choice.body %></p>
-        <p>Choice count: <%= choice.responses.count %></p>
-        </li>
+<div class="survey-response">
+  <p>Total Responders: <%= @survey.survey_takers.count %></p>
+
+  <ul>
+    <% @survey.questions.each do |question| %>
+      <li>Question: <%= question.body %></li>
+      <ul>
+        <% question.choices.each do |choice| %>
+          <li>
+          <p>Choice: <%= choice.body %></p>
+          <p>Choice count: <%= choice.responses.count %></p>
+          </li>
+      <% end %>
+      </ul>
     <% end %>
-    </ul>
-  <% end %>
-</ul>
+  </ul>
+  <button class="hide-button">
+    <i class="fa fa-arrow-circle-up" aria-hidden="true"></i>
+  </button>
+</div>

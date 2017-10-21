@@ -5,7 +5,8 @@ $(document).ready(function() {
   $(".survey-title a").on("click", showSurveyHandler);
   $(".main").on("click", ".add-choice-input", addChoiceButton);
   $(".main").on("submit", ".choice-form", choiceFormHandler);
-  $(".user-survey-title a").on("click", showUserSurvey);
+  $(".main").on("click", ".show-user-survey-title a", showUserSurvey);
+  $(".main").on("click", ".hide-button", hideUserSurvey)
 });
 
 var choiceFormHandler = function(){
@@ -31,7 +32,7 @@ var choiceFormHandler = function(){
 var questionFormHandler = function(){
   event.preventDefault();
 
-  $form = $(this)
+  $form = $(this);
   var url = $form.attr("action");
   var method = $form.attr("method");
   var data = $form.serialize();
@@ -84,6 +85,7 @@ var showSurveyHandler = function() {
   });
 
   request.done(function(response){
+    $(".fa-arrow-circle-down").hide()
     $link.closest("li").append(response);
   });
 };
@@ -105,12 +107,17 @@ var showUserSurvey = function(){
     url: url
   });
 
-  request.done
    request.done(function(response){
+    $link.siblings('.survey-response').empty()
     $link.closest("li").append(response);
   });
 }
 
+
+var hideUserSurvey = function() {
+  event.preventDefault();
+    $(this).closest("li").find(".survey-response").remove();
+};
 
 
 

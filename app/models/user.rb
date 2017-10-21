@@ -2,7 +2,8 @@ class User < ActiveRecord::Base
   include BCrypt
 
   has_many :surveys, foreign_key: :creator_id
-  has_many :responses
+  has_many :responses, foreign_key: :survey_taker_id
+  has_many :taken_surveys, -> { distinct }, through: :responses, source: :survey
 
   validates :username, :first_name, :last_name, :email, presence: true
   validate :validate_password
